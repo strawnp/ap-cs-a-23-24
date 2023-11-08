@@ -3,12 +3,14 @@ public class Particle {
   private PVector velocity;
   private PVector acceleration;
   private float lifespan;
+  private color c;
   
   public Particle(PVector l) {
-    acceleration = new PVector(0, 0.05);
-    velocity = new PVector(random(-1, 1), random(-2, 0));
+    acceleration = new PVector(0, 0.04);
+    velocity = new PVector(random(-5, 5), random(-6, 0));
     location = l.copy();
     lifespan = 255;
+    c = color(random(255), random(255), random(255));
   }
   
   public void run() {
@@ -17,14 +19,29 @@ public class Particle {
   }
   
   private void update() {
+    if (location.y > height - 12) {
+      location.y = height - 12;
+      velocity.y *= -0.8;
+    } else if (location.y < 12) {
+      location.y = 12;
+      velocity.y *= -0.8;
+    }
+    if (location.x < 12) {
+      location.x = 12;
+      velocity.x *= -0.8;
+    } else if (location.x > width - 12) {
+      location.x = width - 12;
+      velocity.x *= -0.8;
+    }
+    
     velocity.add(acceleration);
     location.add(velocity);
     lifespan -= 1.5;
   }
   
   private void display() {
-    stroke(255, 0, 0, lifespan);
-    fill(255, 0, 0, lifespan);
+    noStroke();
+    fill(c, lifespan);
     ellipse(location.x, location.y, 24, 24);
   }
   

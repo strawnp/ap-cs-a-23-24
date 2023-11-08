@@ -28,7 +28,7 @@ public class ProgressBar {
     // max * timer / duration = current
     currentSize = maxSize * timer / duration;
 
-    rect(50, 200, currentSize, 100);
+    rect(x, y, currentSize, h);
 
     text("Timer: " + nf(timer, 0, 2), 50, 350);
 
