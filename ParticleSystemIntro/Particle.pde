@@ -19,6 +19,7 @@ public class Particle {
   }
   
   private void update() {
+    /*
     if (location.y > height - 12) {
       location.y = height - 12;
       velocity.y *= -0.8;
@@ -33,6 +34,7 @@ public class Particle {
       location.x = width - 12;
       velocity.x *= -0.8;
     }
+    */
     
     velocity.add(acceleration);
     location.add(velocity);

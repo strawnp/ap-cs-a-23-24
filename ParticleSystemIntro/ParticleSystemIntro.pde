@@ -1,14 +1,21 @@
 ProgressBar pb;
-ParticleSystem p;
+ArrayList<ParticleSystem> p;
 
 void setup() {
   size(500, 500);
   pb = new ProgressBar();
-  p = new ParticleSystem();
+  p = new ArrayList<>();
+  p.add(new ParticleSystem());
 }
 
 void draw() {
   background(100);
   
-  p.run();
+  for (ParticleSystem s : p) {
+    s.run();
+  }
+}
+
+void mousePressed() {
+  p.add(new ParticleSystem(mouseX, mouseY));
 }
