@@ -3,11 +3,9 @@ public class TriangleParticle extends Particle {
     super(l);
   }
   
-  // override the parent's display() method
   public void display() {
     noStroke();
     fill(super.c, super.lifespan);
-    rectMode(CENTER);
-    rect(super.location.x, super.location.y, 24, 24);
+    triangle(super.location.x, super.location.y, super.location.x - 12, super.location.y + 24, super.location.x + 12, super.location.y + 24);
   }
 }
