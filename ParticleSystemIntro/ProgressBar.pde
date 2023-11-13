@@ -1,4 +1,4 @@
-public class ProgressBar {
+public class ProgressBar extends java.lang.Object {
   private int duration;
   private float timer;
   private float maxSize;

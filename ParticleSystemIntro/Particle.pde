@@ -1,4 +1,4 @@
-public class Particle {
+public class Particle extends java.lang.Object {
   private PVector location;
   private PVector velocity;
   private PVector acceleration;
@@ -18,7 +18,7 @@ public class Particle {
     display();
   }
   
-  private void update() {
+  public void update() {
     /*
     if (location.y > height - 12) {
       location.y = height - 12;
@@ -41,7 +41,7 @@ public class Particle {
     lifespan -= 1.5;
   }
   
-  private void display() {
+  public void display() {
     noStroke();
     fill(c, lifespan);
     ellipse(location.x, location.y, 24, 24);
