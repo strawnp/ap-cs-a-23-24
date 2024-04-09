@@ -7,15 +7,17 @@ public class Player {
     private int speed;
     private Die attackDie;
     private Die defenseDie;
+    private String name;
 
     public Player(int numAttackDie, int numAttackDieSides, int numDefenseDie, int numDefenseDieSides, int hp, int speed,
-            boolean attackLoaded, boolean defenseLoaded) {
+            boolean attackLoaded, boolean defenseLoaded, String name) {
         this.numAttackDie = numAttackDie;
         this.numAttackDieSides = numAttackDieSides;
         this.numDefenseDie = numDefenseDie;
         this.numDefenseDieSides = numDefenseDieSides;
         this.hp = hp;
         this.speed = speed;
+        this.name = name;
         if (!attackLoaded) {
             this.attackDie = new Die(numAttackDieSides);
         } else {
@@ -36,6 +38,14 @@ public class Player {
         return this.hp;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public void takeDamage(int damageIn) {
+        this.hp -= damageIn;
+    }
+
     public int attack() {
         int total = 0;
         for (int i = 0; i < this.numAttackDie; i++) {
@@ -44,16 +54,22 @@ public class Player {
         return total;
     }
     
-    public void defend(int attackValue) {
+    public int defend(int attackValue) {
         int total = 0;
         for (int i = 0; i < this.numDefenseDie; i++) {
             total += this.defenseDie.roll();
         }
         int damage = attackValue - total;
         this.hp -= damage > 0 ? damage : 0;
+
+        return damage;
     }
 
     public boolean isAlive() {
         return this.hp > 0;
+    }
+
+    public String toString() {
+        return this.name + " - " + this.hp + " HP";
     }
 }
